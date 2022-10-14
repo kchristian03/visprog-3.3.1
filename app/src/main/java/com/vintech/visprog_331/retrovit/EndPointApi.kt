@@ -1,8 +1,11 @@
 package com.vintech.visprog_331.retrovit
 
+import com.vintech.visprog_331.model.MovieDetails
 import com.vintech.visprog_331.model.NowPlaying
+import com.vintech.visprog_331.view.MovieDetail
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface EndPointApi {
@@ -13,4 +16,10 @@ interface EndPointApi {
         @Query("language") language: String,
         @Query("page") page: Int
     ):Response<NowPlaying>
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(
+        @Path("movie_id") id: Int,
+        @Query("api_key") apiKey: String
+        ):Response<MovieDetails>
 }

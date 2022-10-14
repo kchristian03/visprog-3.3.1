@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">visprog-3.3.1</string>
+    <string name="img">img</string>
+    <string name="nullString">-</string>
 </resources>
