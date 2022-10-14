@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nullString">-</string>
+    <string name="app_name">visprog-3.3.1</string>
+    <string name="img">img</string>
+    <string name="nullString">Lorem Ipsum</string>
+    <string name="genre">Genre</string>
+    <string name="language">Language</string>
+    <string name="production_country">Production Country</string>
+    <string name="production_company">Production Company</string>
+    <string name="overview">Overview</string>
 </resources>

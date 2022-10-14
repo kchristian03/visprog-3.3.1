@@ -5,11 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vintech.visprog_331.model.Genre
 import com.vintech.visprog_331.model.MovieDetails
 import com.vintech.visprog_331.repository.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.vintech.visprog_331.model.Result
+import com.vintech.visprog_331.model.SpokenLanguage
 import com.vintech.visprog_331.view.MovieDetail
 import kotlinx.coroutines.launch
 
@@ -47,6 +49,40 @@ class MoviesViewModel @Inject constructor(private val repository: MoviesReposito
                 _movieDetail.postValue(response.body() as MovieDetails)
             } else {
                 Log.e("Get Movie Details Data", "Failed!")
+            }
+        }
+    }
+
+    //get movie genre
+    val _movieGenre: MutableLiveData<List<Genre>> by lazy {
+        MutableLiveData<List<Genre>>()
+    }
+    val moviegenre: LiveData<List<Genre>>
+        get() = _movieGenre
+
+    fun getMovieGenre(apiKey: String, movieId: Int) = viewModelScope.launch {
+        repository.getMovieDetailResult(apiKey, movieId).let { response ->
+            if (response.isSuccessful) {
+                _movieGenre.postValue(response.body() as List<Genre>)
+            } else {
+                Log.e("Get Movie Genre", "Failed!")
+            }
+        }
+    }
+
+    //get language
+    val _language: MutableLiveData<List<SpokenLanguage>> by lazy {
+        MutableLiveData<List<SpokenLanguage>>()
+    }
+    val language: LiveData<List<SpokenLanguage>>
+        get() = _language
+
+    fun getLanguage(apiKey: String, movieId: Int) = viewModelScope.launch {
+        repository.getMovieDetailResult(apiKey, movieId).let { response ->
+            if (response.isSuccessful) {
+                _language.postValue(response.body() as List<SpokenLanguage>)
+            } else {
+                Log.e("Get Language", "Failed!")
             }
         }
     }

@@ -12,7 +12,7 @@ import com.vintech.visprog_331.model.Result
 import com.vintech.visprog_331.view.MovieDetail
 
 class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
-        RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
+    RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTitle: TextView
         val tvReleased: TextView
@@ -30,7 +30,7 @@ class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.card_now_playing, viewGroup, false)
+            .inflate(R.layout.card_now_playing, viewGroup, false)
         return ViewHolder(view)
     }
 
@@ -41,7 +41,7 @@ class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
         // contents of the view with that element
         viewHolder.tvTitle.text = dataSet[position].title
         viewHolder.tvReleased.text = dataSet[position].release_date
-        viewHolder.cvNowPlaying.setOnClickListener{
+        viewHolder.cvNowPlaying.setOnClickListener {
             val intent = Intent(it.context, MovieDetail::class.java)
             intent.putExtra("movie_id", dataSet[position].id)
             it.context.startActivity(intent)
